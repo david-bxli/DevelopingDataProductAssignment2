@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Car mpg analysis app introduction</title>
+	<meta name="description" content="Car mpg analysis app introduction">
+	<meta name="author" content="Bingxin Li">
+	<meta name="generator" content="slidify" />
+	
+	<!-- LOAD STYLE SHEETS -->
+	<link rel="stylesheet" href="libraries/frameworks/html5slides/default/styles.css">
+	<link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />  <link rel="stylesheet" href = "assets/css/ribbons.css">
+  
+</head>
+<body style='display: none'>
+	<section class='slides layout-regular template-regular'>
+     <article class="" id="slide-1" style="background:;">
+  <h3>Car mpg analysis app introduction</h3>
+  <p>Purpose</p>
+
+<ol>
+<li>Compare linear model between different predictor</li>
+<li>Display predictor and outcome in plot</li>
+<li>Show linear model among the plot</li>
+</ol>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>How to use</h3>
+  <ol>
+<li>Select predictor on the side bar</li>
+<li>If prefer to draw linear regression model, select &quot;Draw Lm line&quot;</li>
+<li>The result will display in the main panel. Coefficients start with intercept, followed by slope. Plot is based on selected predictor as x axis and mpg as y axis.</li>
+</ol>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>How to get data</h3>
+  <p>The data is based on mtcars built into R package. Use mtcars to retrieve the data. And in this app, we only care about mpg as outcome, hp/cyl/wt as predictor.Below is some biref information about mtcars</p>
+
+<pre><code class="r">data(mtcars)
+dim(mtcars)
+</code></pre>
+
+<pre><code>## [1] 32 11
+</code></pre>
+
+<pre><code class="r">names(mtcars)
+</code></pre>
+
+<pre><code>##  [1] &quot;mpg&quot;  &quot;cyl&quot;  &quot;disp&quot; &quot;hp&quot;   &quot;drat&quot; &quot;wt&quot;   &quot;qsec&quot; &quot;vs&quot;   &quot;am&quot;   &quot;gear&quot;
+## [11] &quot;carb&quot;
+</code></pre>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>How the plot been made</h3>
+  <p>3 types of plot will be generated per predictor selection. mpg ~ cyl, mpg ~ hp or mpg ~ wt. Here we use basic plot</p>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>How to get linear model</h3>
+  <p>If Draw Lm line has been checked, plot will also contain linear model as green abline</p>
+
+<pre><code>## (Intercept)         cyl 
+##    37.88458    -2.87579
+</code></pre>
+
+<pre><code>## (Intercept)          hp 
+## 30.09886054 -0.06822828
+</code></pre>
+
+<pre><code>## (Intercept)          wt 
+##   37.285126   -5.344472
+</code></pre>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3>Display linear model on plot</h3>
+  <p>3 types of linear model will be generated per predictor selection. mpg ~ cyl, mpg ~ hp or mpg ~ wt. </p>
+
+<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+</article>
+
+<article class="class" id="id" style="background:;">
+  <h3></h3>
+  
+</article>
+
+  </section>
+</body>
+  <!-- LOAD JAVASCRIPTS  -->
+	<script src='libraries/frameworks/html5slides/default/slides.js'></script>
+	<!-- LOAD HIGHLIGHTER JS FILES -->
+	<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+	 
+	</html>

@@ -1,0 +1,105 @@
+---
+title       : Car mpg analysis app introduction
+subtitle    : Assigmnent 2
+author      : Bingxin Li
+job         : Engineer
+framework   : html5slides        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Car mpg analysis app introduction
+
+Purpose
+
+1. Compare linear model between different predictor
+2. Display predictor and outcome in plot
+3. Show linear model among the plot
+
+--- .class #id 
+
+## How to use
+1. Select predictor on the side bar
+2. If prefer to draw linear regression model, select "Draw Lm line"
+3. The result will display in the main panel. Coefficients start with intercept, followed by slope. Plot is based on selected predictor as x axis and mpg as y axis.
+
+--- .class #id 
+
+## How to get data
+The data is based on mtcars built into R package. Use mtcars to retrieve the data. And in this app, we only care about mpg as outcome, hp/cyl/wt as predictor.Below is some biref information about mtcars
+
+```{r}
+data(mtcars)
+dim(mtcars)
+names(mtcars)
+```
+
+--- .class #id 
+
+## How the plot been made
+3 types of plot will be generated per predictor selection. mpg ~ cyl, mpg ~ hp or mpg ~ wt. Here we use basic plot
+
+```{r echo = FALSE}
+par(mfrow=c(1,3))
+plotFromCyl<-function(drawLm){
+        plot(mtcars$cyl, mtcars$mpg)
+        if(drawLm)
+                abline(lm(mpg~cyl , data = mtcars), col = "green")
+}
+
+plotFromHp<-function(drawLm){
+        plot(mtcars$hp, mtcars$mpg)
+        if(drawLm)
+                abline(lm(mpg~hp , data = mtcars), col = "green")
+}
+
+plotFromWt<-function(drawLm){
+        plot(mtcars$wt, mtcars$mpg)
+        if(drawLm)
+                abline(lm(mpg~wt , data = mtcars), col = "green")
+}
+plotFromCyl(FALSE)
+plotFromHp(FALSE)
+plotFromWt(FALSE)
+
+```
+
+--- .class #id 
+
+## How to get linear model
+If Draw Lm line has been checked, plot will also contain linear model as green abline
+
+```{r echo = FALSE}
+coeffFromCyl<-function(){
+        return(lm(mpg ~ cyl, data = mtcars)$coeff)
+}
+
+coeffFromHp<-function(){
+        return(lm(mpg ~ hp, data = mtcars)$coeff)
+}
+
+coeffFromWt<-function(){
+        return(lm(mpg ~ wt, data = mtcars)$coeff)
+}
+
+coeffFromCyl()
+coeffFromHp()
+coeffFromWt()
+```
+
+--- .class #id 
+
+## Display linear model on plot
+3 types of linear model will be generated per predictor selection. mpg ~ cyl, mpg ~ hp or mpg ~ wt. 
+
+```{r echo = FALSE}
+par(mfrow=c(1,3))
+plotFromCyl(TRUE)
+plotFromHp(TRUE)
+plotFromWt(TRUE)
+```
+
+--- .class #id 
